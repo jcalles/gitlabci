@@ -1,0 +1,63 @@
+concurrent = <%= @concurrent -%>
+
+<% if @concurrent == '2' -%>
+
+[[runners]]
+  name = "<%=@name1 -%>"
+  url = "<%= @url -%>"
+  token = "<%= @token -%>"
+  limit = 2
+  executor = "shell"
+  builds_dir = ""
+  shell = "bash"
+
+[[runners]]
+  name = "ruby-2.1-docker"
+  url = "<%= @url -%>"
+  token = "<%= @token -%>"
+  limit = 0
+  executor = "docker"
+  builds_dir = ""
+  [runners.docker]
+    host = ""
+    image = "ruby:2.1"
+    privileged = false
+    disable_cache = false
+    cache_dir = ""
+<% end -%>
+
+<% if @concurrent == '3' -%>
+[[runners]]
+  name = "ruby-2.1-docker-ssh"
+  url = "https://CI/"
+  token = "TOKEN"
+  limit = 0
+  executor = "docker-ssh"
+  builds_dir = ""
+  [runners.docker]
+    host = ""
+    image = "ubuntu-upstart:14.04"
+    privileged = false
+    disable_cache = false
+    cache_dir = ""
+  [runners.ssh]
+    port = "22"
+    user = "root"
+    password = "docker.io"
+
+<% end -%>
+
+<% if @concurrent == '4' -%>
+[[runners]]
+  name = "production-server"
+  url = "https://CI/"
+  token = "TOKEN"
+  limit = 0
+  executor = "ssh"
+  builds_dir = ""
+  [runners.ssh]
+    host = "my-production-server"
+    port = "22"
+    user = "root"
+    password = "production-server-password"
+<% end -%>

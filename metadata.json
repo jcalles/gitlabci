@@ -1,0 +1,25 @@
+{
+  "name": "jcalles-gitlabci",
+  "version": "0.1.0",
+  "author": "jcalles",
+  "summary": "Puppet module to install gitlab-ci-multiruner",
+  "license": "Apache 2.0",
+  "source": "https://gitlab.com/gitlab-org/gitlab-ci-multi-runner",
+  "project_page":"https://github.com/jcalles/gitlabci",
+  "issues_url": "https://github.com/jcalles/gitlabci",
+"operatingsystem_support": [
+    {  
+"operatingsystem":"RedHat",
+    "operatingsystemrelease":[ "6.0", "7.0" ]
+    },
+    {
+    "operatingsystem": "Ubuntu",
+    "operatingsystemrelease": [ "14.04", "15.04" ]
+    }
+   ],
+"tags": ["gitlab", "jcalles"],
+  "dependencies": [
+    { "name": "puppetlabs/stdlib", "version_requirement": ">=3.2.0 <5.0.0" },
+    { "name": "puppetlabs/firewall", "version_requirement": ">= 0.0.4" }
+  ]
+}
